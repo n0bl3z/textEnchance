@@ -1,0 +1,538 @@
+/* Минималистичные стили для дополнения Tailwind CSS */
+
+/* Темная тема - CSS переменные */
+:root {
+    /* Светлая тема (по умолчанию) */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-tertiary: #9ca3af;
+    --border-primary: #e5e7eb;
+    --border-secondary: #d1d5db;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --accent-primary: #0ea5e9;
+    --accent-secondary: #0284c7;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+}
+
+[data-theme="dark"] {
+    /* Темная тема */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --border-primary: #475569;
+    --border-secondary: #64748b;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --accent-primary: #38bdf8;
+    --accent-secondary: #0ea5e9;
+    --success-color: #34d399;
+    --warning-color: #fbbf24;
+    --error-color: #f87171;
+}
+
+/* Кастомные анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse-subtle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Плавные переходы для всех интерактивных элементов */
+* {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Базовые стили с поддержкой темной темы */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Навигация */
+.navbar {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+/* Карточки */
+.card {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px -3px var(--shadow-color), 0 4px 6px -2px var(--shadow-color);
+}
+
+/* Формы */
+.form-input,
+.form-textarea,
+input[type="text"],
+textarea {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+input[type="text"]:focus,
+textarea:focus {
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1) !important;
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder,
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: var(--text-tertiary) !important;
+}
+
+/* Специальные стили для темной темы */
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] textarea {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] textarea:focus {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Кнопки */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+}
+
+.btn-secondary {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Статистические карточки */
+.stats-card {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+    border-color: var(--border-primary);
+}
+
+/* Текст */
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-tertiary {
+    color: var(--text-tertiary);
+}
+
+/* Улучшенные фокус-состояния */
+input:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+/* Кастомные скроллбары */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Анимации появления */
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Hover эффекты для карточек */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Кастомные стили для таблицы */
+#previewTable {
+    background-color: var(--bg-secondary);
+}
+
+#previewTable th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    padding: 12px 16px;
+    vertical-align: middle;
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-primary);
+}
+
+#previewTable td {
+    padding: 12px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+/* Выравнивание для первой колонки (параметры) */
+#previewTable td:first-child {
+    text-align: left;
+    font-weight: 500;
+}
+
+/* Выравнивание для второй колонки (числовые значения) */
+#previewTable td:last-child {
+    text-align: right;
+    font-weight: 600;
+    color: var(--accent-primary);
+    font-variant-numeric: tabular-nums;
+    min-width: 100px;
+    padding-right: 24px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+#previewTable tbody tr:hover {
+    background-color: var(--bg-tertiary);
+}
+
+#previewTable tbody tr:hover td {
+    background-color: var(--bg-tertiary);
+}
+
+/* Улучшенные заголовки таблицы */
+#previewTable thead th:first-child {
+    text-align: left;
+}
+
+#previewTable thead th:last-child {
+    text-align: right;
+}
+
+/* Стили для результатов */
+#result {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    background-color: var(--bg-secondary);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+/* Переключатель темы */
+.theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-secondary);
+    color: var(--accent-primary);
+    transform: scale(1.05);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Анимация иконки темы */
+.theme-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(180deg);
+    position: absolute;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Анимация для кнопки обработки */
+#processBtn.processing {
+    animation: pulse-subtle 1.5s infinite;
+    pointer-events: none;
+}
+
+#processBtn.processing::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Улучшенные состояния для чекбоксов */
+input[type="checkbox"]:checked {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+/* Стили для уведомлений */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 400px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -3px var(--shadow-color), 0 4px 6px -2px var(--shadow-color);
+    animation: slideIn 0.3s ease-out;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+.notification.success {
+    background-color: var(--success-color);
+    background: linear-gradient(135deg, var(--success-color), rgba(52, 211, 153, 0.8));
+    border: 1px solid var(--success-color);
+    color: white;
+}
+
+.notification.error {
+    background-color: var(--error-color);
+    background: linear-gradient(135deg, var(--error-color), rgba(248, 113, 113, 0.8));
+    border: 1px solid var(--error-color);
+    color: white;
+}
+
+.notification.info {
+    background-color: var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-primary), rgba(56, 189, 248, 0.8));
+    border: 1px solid var(--accent-primary);
+    color: white;
+}
+
+/* Темная тема для уведомлений */
+[data-theme="dark"] .notification {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .notification.success {
+    background: linear-gradient(135deg, #059669, rgba(16, 185, 129, 0.9));
+}
+
+[data-theme="dark"] .notification.error {
+    background: linear-gradient(135deg, #dc2626, rgba(239, 68, 68, 0.9));
+}
+
+[data-theme="dark"] .notification.info {
+    background: linear-gradient(135deg, #0ea5e9, rgba(56, 189, 248, 0.9));
+}
+
+/* Responsive улучшения */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lg\\:col-span-1,
+    .lg\\:col-span-2 {
+        grid-column: span 1;
+    }
+    
+    /* Адаптивные кнопки результатов */
+    .flex.items-center.gap-3 {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .flex.items-center.gap-3 button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Улучшенное выравнивание таблицы на мобильных */
+    #previewTable td:last-child {
+        padding-right: 16px;
+        min-width: 80px;
+    }
+    
+    /* Адаптивная статистика */
+    .stats-card {
+        text-align: center;
+    }
+}
+
+/* Улучшенная типографика */
+h1, h2, h3 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Стили для загрузки */
+.loading-skeleton {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Улучшенные тени */
+.shadow-soft {
+    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Градиентные акценты */
+.gradient-accent {
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+}
+
+/* Стили для статистики */
+.stats-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
+}
+
+/* Кастомные утилиты */
+.text-balance {
+    text-wrap: balance;
+}
+
+.transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Печать */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .bg-white {
+        background: white !important;
+    }
+    
+    .shadow-sm,
+    .shadow-md,
+    .shadow-lg {
+        box-shadow: none !important;
+    }
+}
